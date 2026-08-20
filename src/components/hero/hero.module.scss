@@ -1,0 +1,92 @@
+@use '../../assets/styles/vars';
+
+.hero {
+  position: relative;
+  flex-shrink: 0;
+  min-height: vars.$hero-height;
+  display: flex;
+  align-items: center;
+  background-color: vars.$brand-color;
+  background-image: linear-gradient(120deg, var(--purple-800) 0%, var(--purple-900) 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(30, 17, 48, 0.72) 0%, rgba(30, 17, 48, 0.24) 100%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 32px;
+  }
+
+  &__menu {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: vars.$radius-pill;
+    background: rgba(255, 255, 255, 0.1);
+    line-height: 0;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: var(--neutral-0);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.24);
+    }
+  }
+
+  &__text {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+    margin-right: auto;
+  }
+
+  &__greeting {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    color: var(--neutral-0);
+    font-family: vars.$font-heading;
+    font-size: clamp(26px, 3.4vw, 38px);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 6px rgba(30, 17, 48, 0.4);
+  }
+
+  &__subtext {
+    color: var(--purple-200);
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 60ch;
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    max-height: 56px;
+    max-width: 220px;
+    object-fit: contain;
+    // A chosen banner image can be light where the logo sits, so the logo keeps
+    // its own shadow rather than relying on the overlay gradient for contrast.
+    filter: drop-shadow(0 2px 6px rgba(30, 17, 48, 0.45));
+  }
+}

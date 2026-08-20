@@ -1,0 +1,147 @@
+@use '../../assets/styles/vars';
+
+.overview {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 24px 28px 32px;
+
+  &__section + &__section {
+    margin-top: 32px;
+  }
+
+  &__heading {
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: vars.$text-secondary-color;
+  }
+
+  &__tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+}
+
+.tile {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  text-align: left;
+  padding: 18px;
+  border: 1px solid vars.$border-color;
+  border-radius: vars.$radius;
+  background: vars.$surface-color;
+  box-shadow: vars.$shadow-sm;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    border-color: vars.$interactive-color;
+    box-shadow: vars.$shadow-md;
+    transform: translateY(-1px);
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: vars.$radius-sm;
+    background: vars.$surface-muted-color;
+    color: vars.$interactive-color;
+  }
+
+  &__name {
+    font-family: vars.$font-heading;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: vars.$text-primary-color;
+  }
+
+  &__counts {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: vars.$text-secondary-color;
+  }
+
+  &__dot {
+    color: vars.$border-strong-color;
+  }
+}
+
+.favorites {
+  border: 1px solid vars.$border-color;
+  border-radius: vars.$radius;
+  background: vars.$surface-color;
+  box-shadow: vars.$shadow-sm;
+  overflow: hidden;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 18px;
+    border: none;
+    border-bottom: 1px solid vars.$border-color;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: vars.$brand-tint;
+    }
+  }
+
+  &__list li:last-child &__item {
+    border-bottom: none;
+  }
+
+  &__star {
+    display: flex;
+    flex-shrink: 0;
+    color: #ffb000;
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  &__name {
+    flex: 1;
+    min-width: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: vars.$text-primary-color;
+  }
+
+  &__type {
+    flex-shrink: 0;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: vars.$text-secondary-color;
+  }
+
+  &__empty {
+    padding: 20px 18px;
+    font-size: 13px;
+    color: vars.$text-secondary-color;
+  }
+}

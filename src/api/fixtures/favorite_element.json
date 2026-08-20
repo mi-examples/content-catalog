@@ -1,0 +1,16 @@
+{
+  "favorite_elements": [
+    {
+      "element_id": 101,
+      "segment_value_id": 0,
+      "favorite_id": 1,
+      "element_dashboard_name": "Revenue vs Plan"
+    },
+    {
+      "element_id": 107,
+      "segment_value_id": 0,
+      "favorite_id": 1,
+      "element_dashboard_name": "Quota Attainment"
+    }
+  ]
+}

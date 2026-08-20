@@ -1,0 +1,14 @@
+{
+  "username": "jtownsend",
+  "first_name": "Jerremy",
+  "last_name": "Townsend",
+  "display_name": "Jerremy Townsend",
+  "is_administrator": "Y",
+  "is_power_user": "Y",
+  "groups": [
+    {
+      "group_id": 1,
+      "name": "Everyone"
+    }
+  ]
+}

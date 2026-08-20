@@ -1,0 +1,313 @@
+@use '../../assets/styles/vars';
+
+.sidebar {
+  height: 100%;
+  flex-shrink: 0;
+  transition: width 0.25s ease-in-out, min-width 0.25s ease-in-out;
+
+  // pp-components hard-codes #fff / #e0e0e0 / #222 / #f4f4f4 into its injected
+  // styles, so the theme tokens have to be re-applied over them for the palette
+  // (and the dark scheme) to hold.
+  background: vars.$surface-color !important;
+  border-right: 1px solid vars.$border-color !important;
+
+  [class*='sidebar__header'] {
+    border-bottom-color: vars.$border-color;
+  }
+
+  [class*='item-button'] {
+    color: vars.$text-primary-color;
+
+    &:hover {
+      background: vars.$brand-tint;
+    }
+  }
+
+  [class*='item-arrow'] svg {
+    stroke: vars.$text-secondary-color;
+  }
+
+  // Node glyphs (folder / category) and the static Show All + Favorites icons
+  [class*='item-icon'] svg {
+    width: 18px;
+    height: 18px;
+    color: vars.$interactive-color;
+    stroke: currentColor;
+  }
+
+  [class*='list-item'] {
+    color: vars.$text-secondary-color;
+
+    &:hover {
+      background: vars.$brand-tint;
+    }
+  }
+
+  [class*='list-item--active'] {
+    background: vars.$brand-tint;
+  }
+
+  // ---- header: collapse/close control + logo ------------------------------
+  &__header {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    padding: 4px 0 8px;
+  }
+
+  &__toggle {
+    display: block;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0 0 4px auto;
+    border: none;
+    background: none;
+    line-height: 0;
+    cursor: pointer;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: vars.$text-secondary-color;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+    }
+
+    &:hover svg {
+      stroke: vars.$interactive-color;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    img {
+      max-width: 150px;
+      max-height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+  }
+
+  // The default lockup is monochrome Truist Purple, which vanishes on the dark
+  // surface — inverting it to white keeps the mark readable in either scheme.
+  :global([data-theme='dark']) &__logo img {
+    filter: brightness(0) invert(1);
+  }
+
+  &__wordmark {
+    font-family: vars.$font-heading;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: vars.$interactive-color;
+  }
+
+  // ---- nav ---------------------------------------------------------------
+  &__navTitle {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 8px 14px 6px;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: vars.$text-secondary-color;
+    background: vars.$surface-color;
+  }
+
+  &__item {
+    border-radius: vars.$radius;
+  }
+
+  // The library owns the clickable row and only tags top-level wrappers with
+  // sidebarItemClassName, so the active background has to key off the button
+  // that directly holds the active render slot — otherwise a selected subfolder
+  // would light up its ancestor instead.
+  [class*='item-button']:has(> [class*='item-name'] > .sidebar__itemName.is-active) {
+    background: vars.$interactive-color;
+
+    .sidebar__itemName {
+      color: vars.$on-interactive-color;
+    }
+
+    [class*='item-icon'] svg {
+      color: vars.$on-interactive-color;
+    }
+
+    [class*='item-arrow'] svg {
+      stroke: vars.$on-interactive-color;
+    }
+
+    &:hover {
+      background: vars.$interactive-color;
+    }
+  }
+
+  &__itemName {
+    display: block;
+    min-width: 0;
+    font-weight: 600;
+    color: vars.$text-primary-color;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__staticIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  // ---- element rows ------------------------------------------------------
+  &__element {
+    display: block;
+    min-width: 0;
+    color: vars.$text-secondary-color;
+    word-break: break-word;
+
+    &.is-active {
+      font-weight: 700;
+      color: vars.$interactive-color;
+    }
+  }
+
+  // ---- collapsed icon rail ----------------------------------------------
+  &--rail {
+    width: 72px !important;
+    min-width: 72px !important;
+
+    .sidebar__navTitle {
+      display: none;
+    }
+
+    .sidebar__header {
+      justify-items: center;
+    }
+
+    .sidebar__toggle {
+      margin: 0 auto 4px;
+    }
+
+    // A wide wordmark would squash to a sliver in the 72px rail, so the rail
+    // constrains height and lets width follow. Supply a compact mark via the
+    // Sidebar Logo variable for the best result here.
+    .sidebar__logo img {
+      max-width: 44px;
+      max-height: 26px;
+      object-fit: contain;
+    }
+
+    // "Catalog" plus its tracking is wider than the 72px rail, so the fallback
+    // wordmark steps aside there; a Sidebar Logo image still shows.
+    .sidebar__wordmark {
+      display: none;
+    }
+
+    [class*='item-name'],
+    [class*='item-arrow'],
+    [class*='__list'] {
+      display: none !important;
+      max-width: 0;
+    }
+
+    [class*='item-button'] {
+      justify-content: center;
+      padding: 10px 8px;
+    }
+  }
+
+  // ---- overlay drawer (narrow viewports) --------------------------------
+  // The library's own .sidebar rule sets `position: relative` at the same
+  // specificity and its styles are injected at import time, so the overlay
+  // positioning has to win explicitly.
+  &--overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    height: 100% !important;
+    z-index: 1001;
+    width: 320px !important;
+    min-width: 320px !important;
+    max-width: 90vw !important;
+    box-shadow: vars.$shadow-lg;
+    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  }
+
+  &--hidden {
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: vars.$scrim-color;
+  }
+
+  // ---- portals -----------------------------------------------------------
+  &__tooltip {
+    position: absolute;
+    transform: translateY(-50%);
+    padding: 8px 12px;
+    border: 1px solid vars.$brand-tint-strong;
+    border-radius: vars.$radius;
+    background: vars.$surface-color;
+    box-shadow: vars.$shadow-md;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: vars.$text-primary-color;
+    pointer-events: none;
+  }
+
+  &__contextMenu {
+    position: absolute;
+    border-radius: vars.$radius;
+    background: vars.$surface-color;
+    box-shadow: vars.$shadow-md;
+    overflow: hidden;
+  }
+
+  &__contextMenuItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 16px;
+    border: none;
+    background: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: vars.$text-primary-color;
+    white-space: nowrap;
+    cursor: pointer;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    &:hover {
+      background: vars.$brand-tint;
+    }
+  }
+}

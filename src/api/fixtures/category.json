@@ -1,0 +1,60 @@
+{
+  "categories": [
+    {
+      "id": 10,
+      "name": "Executive",
+      "parent_category_id": null,
+      "description": "Company-wide KPIs",
+      "visible_on_dashboard": "Y"
+    },
+    {
+      "id": 11,
+      "name": "Executive Scorecard",
+      "parent_category_id": 10,
+      "description": null,
+      "visible_on_dashboard": "Y"
+    },
+    {
+      "id": 20,
+      "name": "Sales",
+      "parent_category_id": null,
+      "description": "Sales performance",
+      "visible_on_dashboard": "Y"
+    },
+    {
+      "id": 21,
+      "name": "Pipeline",
+      "parent_category_id": 20,
+      "description": null,
+      "visible_on_dashboard": "Y"
+    },
+    {
+      "id": 22,
+      "name": "Performance",
+      "parent_category_id": 20,
+      "description": null,
+      "visible_on_dashboard": "Y"
+    },
+    {
+      "id": 30,
+      "name": "Finance",
+      "parent_category_id": null,
+      "description": "Finance reporting",
+      "visible_on_dashboard": "Y"
+    },
+    {
+      "id": 31,
+      "name": "Accounting",
+      "parent_category_id": 30,
+      "description": null,
+      "visible_on_dashboard": "Y"
+    },
+    {
+      "id": 40,
+      "name": "Archive",
+      "parent_category_id": null,
+      "description": "Nothing in here",
+      "visible_on_dashboard": "Y"
+    }
+  ]
+}

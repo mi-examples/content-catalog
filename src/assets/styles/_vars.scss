@@ -1,0 +1,51 @@
+/**
+ * SCSS aliases for the Truist theme tokens in _tokens.scss.
+ *
+ * These are `var()` references, not colour literals, so every component
+ * follows the runtime theme (including the dark scheme). Use the tokens
+ * directly for anything that needs a colour function.
+ */
+
+// Brand
+$brand-color: var(--purple-800);
+$brand-color-dark: var(--purple-900);
+$accent-color: var(--purple-500);
+// Theme-aware interactive colour: Truist purple on light, periwinkle on dark,
+// so active states and icons stay legible in both schemes.
+$interactive-color: var(--action-primary-bg);
+$interactive-color-hover: var(--action-primary-bg-hover);
+$on-interactive-color: var(--action-primary-text);
+$brand-tint: var(--brand-tint-08);
+$brand-tint-strong: var(--brand-tint-24);
+
+// Text
+$text-primary-color: var(--text-primary);
+$text-secondary-color: var(--text-secondary);
+$text-muted-color: var(--text-muted);
+$text-inverse-color: var(--text-inverse);
+$text-link-color: var(--text-link);
+
+// Surfaces
+$canvas-color: var(--bg-canvas);
+$surface-color: var(--bg-surface);
+$surface-muted-color: var(--bg-subtle);
+$border-color: var(--border-subtle);
+$border-strong-color: var(--border-default);
+$scrim-color: var(--scrim);
+
+// Shape & elevation
+$radius-sm: var(--radius-sm);
+$radius: var(--radius-md);
+$radius-lg: var(--radius-lg);
+$radius-pill: var(--radius-pill);
+$shadow-sm: var(--shadow-sm);
+$shadow-md: var(--shadow-md);
+$shadow-lg: var(--shadow-lg);
+
+// Type
+$font-stack: var(--font-body);
+$font-heading: var(--font-heading);
+$font-mono: var(--font-mono);
+
+// Layout
+$hero-height: 176px;

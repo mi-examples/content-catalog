@@ -1,0 +1,60 @@
+{
+  "folders": [
+    {
+      "folder_id": 1,
+      "name": "Executive",
+      "parent_folder_id": null,
+      "description": "Company-wide KPIs",
+      "display_order": 1
+    },
+    {
+      "folder_id": 2,
+      "name": "Executive Scorecard",
+      "parent_folder_id": 1,
+      "description": null,
+      "display_order": 1
+    },
+    {
+      "folder_id": 3,
+      "name": "Sales",
+      "parent_folder_id": null,
+      "description": "Sales performance",
+      "display_order": 2
+    },
+    {
+      "folder_id": 4,
+      "name": "Pipeline",
+      "parent_folder_id": 3,
+      "description": null,
+      "display_order": 1
+    },
+    {
+      "folder_id": 5,
+      "name": "Performance",
+      "parent_folder_id": 3,
+      "description": null,
+      "display_order": 2
+    },
+    {
+      "folder_id": 6,
+      "name": "Finance",
+      "parent_folder_id": null,
+      "description": "Finance reporting",
+      "display_order": 3
+    },
+    {
+      "folder_id": 7,
+      "name": "Accounting",
+      "parent_folder_id": 6,
+      "description": null,
+      "display_order": 1
+    },
+    {
+      "folder_id": 8,
+      "name": "Archive",
+      "parent_folder_id": null,
+      "description": "Nothing in here",
+      "display_order": 4
+    }
+  ]
+}

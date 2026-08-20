@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Truist-derived web theme
+   Anchored on Truist Purple #2E1A47 — the brand color formed by blending
+   BB&T burgundy with SunTrust blue.
+   All text/background pairings below meet WCAG AA (4.5:1) or better.
+   ========================================================================== */
+
+:root {
+  /* --- Brand purple ramp (hue family of #2E1A47) --------------------- */
+  --purple-50:  #F5F3F9;
+  --purple-100: #E8E3F2;
+  --purple-200: #D2C9E6;
+  --purple-300: #A6A3E0;  /* brand periwinkle — dark-mode accent, chart series */
+  --purple-400: #8367BE;
+  --purple-500: #6F4BA8;  /* interactive purple on light backgrounds */
+  --purple-600: #5B3D8C;
+  --purple-700: #472C6E;
+  --purple-800: #2E1A47;  /* TRUIST PURPLE — primary */
+  --purple-900: #1E1130;
+
+  /* --- Neutrals (cool, faintly purple-tinted) ------------------------ */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F7F6F9;
+  --neutral-100: #EDEBF0;
+  --neutral-200: #DCD9E2;
+  --neutral-300: #C2BDCB;
+  --neutral-400: #A9A4B4;
+  --neutral-500: #6E687C;
+  --neutral-600: #55505F;
+  --neutral-700: #45404F;
+  --neutral-800: #322D3B;
+  --neutral-900: #221E2A;
+  --neutral-950: #1A1022;
+
+  /* --- Status ------------------------------------------------------- */
+  --success: #1E7A5A;  --success-surface: #E6F4EE;
+  --warning: #8A5200;  --warning-surface: #FBF0DF;
+  --danger:  #A3231C;  --danger-surface:  #FBEAE8;
+  --info:    #2A5CAA;  --info-surface:    #E8F0FB;
+
+  /* --- Heritage / data-viz series ------------------------------------ */
+  /* Reads as the brand's own lineage: burgundy and blue resolving into purple */
+  --series-1: #2E1A47;
+  --series-2: #6F4BA8;
+  --series-3: #A6A3E0;
+  --series-4: #2A5CAA;
+  --series-5: #8C2F44;
+  --series-6: #1E7A5A;
+
+  /* --- Semantic: light theme (default) ------------------------------- */
+  --bg-canvas:     var(--neutral-50);
+  --bg-surface:    var(--neutral-0);
+  --bg-raised:     var(--neutral-0);
+  --bg-inverse:    var(--purple-800);
+  --bg-subtle:     var(--purple-50);
+
+  --text-primary:   var(--purple-900);
+  --text-secondary: var(--neutral-600);
+  --text-muted:     var(--neutral-500);
+  --text-inverse:   var(--neutral-0);
+  --text-link:      var(--purple-600);
+  --text-link-hover:var(--purple-800);
+
+  --border-subtle:  var(--neutral-200);
+  --border-default: var(--neutral-300);
+  --border-strong:  var(--purple-800);
+
+  --action-primary-bg:       var(--purple-800);
+  --action-primary-bg-hover: var(--purple-900);
+  --action-primary-text:     var(--neutral-0);
+  --action-secondary-bg:     transparent;
+  --action-secondary-text:   var(--purple-800);
+  --action-secondary-border: var(--purple-800);
+  --action-disabled-bg:      var(--neutral-200);
+  --action-disabled-text:    var(--neutral-500);
+
+  --focus-ring: var(--purple-500);
+
+  /* --- Elevation & shape --------------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;   /* the logo's rounded-square logic, taken to buttons */
+
+  --shadow-sm: 0 1px 2px rgba(30, 17, 48, .08);
+  --shadow-md: 0 4px 12px rgba(30, 17, 48, .10);
+  --shadow-lg: 0 12px 32px rgba(30, 17, 48, .14);
+}
+
+/* --- Semantic: dark theme -------------------------------------------- */
+[data-theme="dark"] {
+  --bg-canvas:  var(--neutral-950);
+  --bg-surface: #241734;
+  --bg-raised:  #2E1F42;
+  --bg-inverse: var(--neutral-0);
+  --bg-subtle:  #2A1B3D;
+
+  --text-primary:   #F2EFF7;
+  --text-secondary: #C2BDCB;
+  --text-muted:     #A9A4B4;
+  --text-inverse:   var(--purple-900);
+  --text-link:      #C9C3F0;
+  --text-link-hover:#E8E3F2;
+
+  --border-subtle:  #3A2B52;
+  --border-default: #4C3A69;
+  --border-strong:  var(--purple-300);
+
+  --action-primary-bg:       var(--purple-300);
+  --action-primary-bg-hover: #C9C3F0;
+  --action-primary-text:     var(--purple-900);
+  --action-secondary-text:   var(--purple-300);
+  --action-secondary-border: var(--purple-300);
+  --action-disabled-bg:      #3A2B52;
+  --action-disabled-text:    #7E7590;
+
+  --focus-ring: var(--purple-300);
+
+  --success: #4FBF92;  --success-surface: #12352A;
+  --warning: #D99B31;  --warning-surface: #3A2A12;
+  --danger:  #E0685F;  --danger-surface:  #3A1817;
+  --info:    #7FA9E8;  --info-surface:    #16233A;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+  }
+}

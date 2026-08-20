@@ -1,0 +1,147 @@
+@use '../../assets/styles/vars';
+
+.viewer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: vars.$surface-color;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-shrink: 0;
+    padding: 10px 20px;
+    border-bottom: 1px solid vars.$border-color;
+    background: vars.$surface-muted-color;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width: 0;
+    font-size: 13px;
+    color: vars.$text-secondary-color;
+  }
+
+  &__crumb {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__divider {
+    margin: 0 6px;
+    color: vars.$border-strong-color;
+  }
+
+  &__current {
+    font-family: vars.$font-heading;
+    font-weight: 600;
+    color: vars.$text-primary-color;
+  }
+
+  &__controls {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__favorite {
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: vars.$text-secondary-color;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    &:hover svg {
+      stroke: vars.$interactive-color;
+    }
+  }
+
+  &__button {
+    padding: 6px 14px;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$radius-pill;
+    background: vars.$surface-color;
+    color: vars.$text-primary-color;
+    font-family: vars.$font-heading;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover {
+      border-color: vars.$interactive-color;
+      background: vars.$brand-tint;
+      color: vars.$interactive-color;
+    }
+  }
+
+  &__shareTooltip {
+    position: absolute;
+    z-index: 1003;
+    padding: 10px 14px;
+    border: 1px solid vars.$brand-tint-strong;
+    border-radius: vars.$radius-sm;
+    background: vars.$surface-color;
+    box-shadow: vars.$shadow-md;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: vars.$text-secondary-color;
+  }
+
+  &__fixtures {
+    display: grid;
+    gap: 10px;
+    align-content: center;
+    justify-items: center;
+    flex: 1;
+    padding: 24px;
+    color: vars.$text-secondary-color;
+    text-align: center;
+
+    code {
+      padding: 6px 10px;
+      border: 1px solid vars.$border-color;
+      border-radius: vars.$radius-sm;
+      background: vars.$surface-muted-color;
+      font-family: vars.$font-mono;
+      font-size: 12px;
+      word-break: break-all;
+    }
+  }
+
+  &__frame {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    border: none;
+  }
+}

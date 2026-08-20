@@ -1,0 +1,90 @@
+@use 'vars';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: vars.$font-stack;
+  font-size: 15px;
+  line-height: 1.55;
+  color: vars.$text-primary-color;
+  background: vars.$canvas-color;
+}
+
+#root {
+  height: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: vars.$font-heading;
+  letter-spacing: 0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: vars.$radius-sm;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: vars.$canvas-color;
+}
+
+.layout__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.layout__empty,
+.layout__placeholder {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  flex: 1;
+  padding: 48px 24px;
+  color: vars.$text-secondary-color;
+
+  h2 {
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: vars.$text-primary-color;
+  }
+
+  p {
+    max-width: 60ch;
+  }
+
+  code {
+    padding: 1px 5px;
+    border: 1px solid vars.$border-color;
+    border-radius: vars.$radius-sm;
+    background: vars.$surface-color;
+    font-family: vars.$font-mono;
+    font-size: 12px;
+  }
+}
